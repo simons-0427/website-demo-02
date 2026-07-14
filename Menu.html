@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Speisekarte — Jimmy's Tapas Bar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <script src="assets/js/design-system.js"></script>
+</helmet>
+
+<div style="background:var(--surface-page)" data-screen-label="Menu">
+
+  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.NavBar" logo="{{ logoUrl }}" links="{{ navLinks }}" cta-label="Reservieren" cta-href="Contact.html#reservieren" transparent="{{ navTransparent }}" hint-size="100%,84px"></x-import>
+
+  <!-- HEADER -->
+  <section style="background:var(--ink-900);padding:calc(84px + var(--space-8)) var(--container-pad) var(--space-8);text-align:center;border-bottom:1px solid var(--border-on-dark)">
+    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
+    <div style="margin-top:var(--space-5)">
+      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" eyebrow="Sip · Genießen · Entspannen" title="Speisekarte" script="mit Liebe zubereitet" hint-size="100%,140px"></x-import>
+    </div>
+  </section>
+
+  <!-- KATEGORIE-FILTER -->
+  <section style="background:var(--surface-page);padding:var(--space-7) var(--container-pad) 0">
+    <div style="max-width:var(--container-max);margin:0 auto;display:flex;justify-content:center;gap:var(--space-3);flex-wrap:wrap">
+      <sc-for list="{{ categories }}" as="cat">
+        <button onclick="{{ cat.select }}" style="font:var(--text-button);letter-spacing:var(--tracking-wider);text-transform:uppercase;padding:0.85em 1.6em;border-radius:var(--radius-pill);border:1px solid {{ cat.borderColor }};background:{{ cat.bg }};color:{{ cat.color }};cursor:pointer;transition:all var(--duration-fast) var(--ease-standard)">{{ cat.label }}</button>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- GERICHTE -->
+  <section style="background:var(--surface-page);padding:var(--space-8) var(--container-pad) var(--section-pad-y)">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));gap:var(--space-5)">
+      <sc-for list="{{ dishes }}" as="dish">
+        <div style="display:flex;flex-direction:column;gap:var(--space-3);background:var(--surface-card);border:1px solid var(--border-on-dark);border-radius:var(--radius-lg);padding:var(--space-5)">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-3);align-items:flex-start">
+            <h3 style="font:var(--text-serif-lg);color:var(--text-on-dark-primary);margin:0">{{ dish.name }}</h3>
+            <span style="font:var(--text-serif-md);color:var(--gold-400);white-space:nowrap;flex-shrink:0">{{ dish.price }}</span>
+          </div>
+          <sc-if value="{{ dish.description }}">
+            <p style="font:var(--text-body-sm);color:var(--text-on-dark-secondary);margin:0">{{ dish.description }}</p>
+          </sc-if>
+          <sc-if value="{{ dish.badges.length }}">
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:auto;padding-top:var(--space-2)">
+              <sc-for list="{{ dish.badges }}" as="b">
+                <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Badge" tone="{{ b.tone }}">{{ b.label }}</x-import>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- RESERVIERUNGS-CTA -->
+  <section style="background:var(--ink-900);padding:var(--space-10) var(--container-pad);text-align:center;border-top:1px solid var(--border-on-dark)">
+    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
+    <h2 style="font:var(--text-display-md);color:var(--cream-100);margin:var(--space-5) 0 0">Lust bekommen?</h2>
+    <div style="font:var(--text-script-md);color:var(--gold-400);margin-top:var(--space-2);white-space:nowrap">wir freuen uns auf Dich</div>
+    <div style="margin-top:var(--space-6)">
+      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Button" variant="primary" size="lg" href="Contact.html#reservieren" hint-size="auto,52px">Tisch reservieren</x-import>
+    </div>
+  </section>
+
+  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Footer" logo="{{ logoUrl }}" address="Am Strande 21
+23730 Neustadt in Holstein
++49 1573 5256793" hours="{{ hours }}" socials="{{ socials }}" legal-links="{{ legalLinks }}" hint-size="100%,320px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+// Badge-Kürzel
+const V  = { label: 'Vegetarisch', tone: 'sage' };
+const VG = { label: 'Vegan', tone: 'gold' };
+const S  = { label: 'Scharf', tone: 'berry' };
+
+// Vollständige Speisekarte: [Name, Preis, Beschreibung, Badges]
+const MENU = [
+  { cat: 'Salate', items: [
+    ['Krautsalat', '4,50 €', '', [VG]],
+    ['Gemischter Salat', '4,50 €', 'Gurken, Tomaten, Paprika, rote Zwiebeln, Mais, Peperoni', [VG]],
+    ['Salat mit Feta', '6,90 €', 'gemischter Salat mit Feta', [V]],
+    ['Thunfisch Salat', '7,90 €', 'gemischter Salat mit Thunfisch'],
+    ['Hähnchen Salat', '7,90 €', 'gemischter Salat mit Hähnchenstreifen'],
+  ]},
+  { cat: 'Tapas Vegetarian', items: [
+    ['Gebratenes Gemüse der Saison', '5,90 €', '', [VG]],
+    ['Papas Bravas', '4,50 €', 'gebratene Kartoffeln', [VG, S]],
+    ['Tortilla de Patata con Aioli', '4,50 €', 'spanisches Kartoffel-Omelette', [V]],
+    ['Pimientos de Patron', '5,50 €', '', [VG]],
+    ['Kanarische Kartoffeln im Salzmantel', '5,50 €', 'mit Mojosauce', [VG]],
+    ['Feta Häppchen', '4,90 €', 'auf Johannesbeersauce', [V]],
+    ['Rosmarin Ziegenkäse', '5,40 €', 'mit einer Sauce nach Wahl', [V]],
+    ['Feta überbacken mit Cherrytomaten', '5,50 €', 'Knoblauchöl, Chili, Lauchzwiebeln', [V]],
+    ['Überbackene Champignons', '5,50 €', 'mit Reis und Pinienkernen auf Roquefortsauce', [V]],
+    ['Überbackene Tomaten', '5,50 €', '', [V]],
+    ['Champignons al Ajillo', '5,50 €', 'Auberginen mit Honig', [V]],
+    ['Teigrollen mit Spinat', '4,90 €', 'mit Rosinen und Pinienkernen auf Tomaten- und Kräutersauce', [V]],
+    ['Feta überbacken mit Feigen und Honig-Senf-Sauce', '5,50 €', '', [V]],
+  ]},
+  { cat: 'Tapas de Carne', items: [
+    ['Datiles con Bacon', '5,90 €', 'Datteln mit knusprigem Speckmantel'],
+    ['Albondigas a la Casera', '6,50 €', 'hausgemachte Hackbällchen mit Tomatensauce'],
+    ['Pincho de Cerdo', '5,90 €', 'Schweinespieß mit scharfer Sauce', [S]],
+    ['Pincho de Chorizo', '5,90 €', 'spanischer Paprikawurstspieß'],
+    ['Chuletas de Cordero', '7,90 €', '2 Lammkoteletts mit Knoblauch und Sauce nach Wahl'],
+    ['Rollitos de Serrano con Higo', '7,90 €', 'Feigen mit Serranoschinken und Frischkäse'],
+    ['Queso de Cabra con Bacon', '5,50 €', 'speckumhüllte Ziegenkäsehäppchen mit Balsamicocreme'],
+    ['Chorizo al Diablo', '6,50 €', 'spanische Paprikawurst in Rotweinsauce', [S]],
+    ['Medaillons de Carne', '7,90 €', 'Rindermedaillons auf Pilz-Ragoutsauce'],
+    ['Gefüllte Champignons', '6,90 €', 'gefüllt mit Käse, in Bacon, mit Kräutern und Tomatensauce'],
+    ['Champignons de Carne', '7,90 €', 'Rindermedaillons in Pfeffersauce'],
+    ['Schweinefilet mit Cherrytomaten', '6,90 €', 'Lauchzwiebeln, Chili, Mango-Honigsauce'],
+    ['Schweinefilet', '6,90 €', 'mit Mangold und Pilzen in Crème-fraîche-Sauce'],
+    ['Chorizo a la Plancha', '6,50 €', 'gegrillte Chorizo'],
+    ['Lammfilet', '8,90 €', 'mit Pfeffersauce'],
+  ]},
+  { cat: 'Tapas de Pescado', items: [
+    ['Boquerones Fritos', '6,50 €', 'frittierte Sardellen'],
+    ['Calamares a la Plancha', '7,90 €', 'gegrillte Calamares mit Knoblauch-Öl'],
+    ['Calamares a la Romana', '6,90 €', 'frittierte Calamares mit Aioli'],
+    ['Salmon con Espinaca', '8,90 €', 'Lachsfilet auf Spinat'],
+    ['Gambas a la Plancha', '9,90 €', '3 gegrillte Tiger-Garnelen mit Gemüse'],
+    ['Scampi-Dattel-Spieß', '7,90 €', 'im Speckmantel mit Honig-Senf-Dressing'],
+    ['Gambas al Ajillo', '8,90 €', 'Garnelen in Knoblauch-Öl'],
+    ['Muslitos de Mar', '5,50 €', 'Krebsfleischbällchen'],
+    ['Gegrillter Oktopus', '9,90 €', 'auf Mangold mit Kichererbsen und Gemüse'],
+    ['Jacobsmuscheln', '9,90 €', 'auf Spinat mit Pinienkernen und Cherrytomaten'],
+    ['Zanderfilet', '7,90 €', 'mit Rosmarin in Knoblauch-Sahnesauce'],
+    ['Gambas Pil Pil', '8,90 €', 'in scharfer Tomatensauce', [S]],
+    ['Empanadas', '6,50 €', 'gefüllte Teigtaschen mit Thunfisch'],
+    ['Chipirones', '6,50 €', 'frittierte Baby-Calamares mit Aioli'],
+  ]},
+  { cat: 'Griechische Spezialitäten', items: [
+    ['Gyros Teller', '11,90 €', ''],
+    ['Bifteki', '11,90 €', 'gegrilltes Hackfleisch gefüllt mit Feta'],
+    ['Schweinespieße', '11,90 €', '2 Stück'],
+    ['Lamm Gyros', '13,90 €', '2 Lammkoteletts mit Gyros'],
+    ['Hacksteak', '12,90 €', '3 Stück'],
+    ['Mix Teller', '11,90 €', 'mit Schweinespieß und Gyros'],
+    ['Jimmys Teller', '17,90 €', '1 Schweinespieß, Gyros, Bifteki, Pommes frites, Salat, Tzatziki'],
+    ['Jimmys Platte, 2 Personen', '34,90 €', '2 Schweinespieße, Gyros, Bifteki, Pommes frites, Salat, Tzatziki'],
+    ['Schweinefilet', '14,90 €', 'mit Pfefferrahmsauce und Kroketten'],
+    ['Hacksteak, überbacken', '13,90 €', '3 Stück, mit Metaxasauce, Ananas und Käse überbacken, ohne Beilagen'],
+    ['Croquetas de Bacalau', '5,90 €', 'mit Stockfisch und Kroketten'],
+    ['Croquetas de Queso', '5,90 €', 'mit Schafskäse und Kroketten'],
+    ['Croquetas de Almendras', '5,90 €', 'mit Mandeln und Kroketten auf Pilzsauce'],
+    ['Croquetas de Jamon', '5,90 €', 'mit Serranoschinken und Kroketten'],
+  ]},
+  { cat: 'Pizza', items: [
+    ['Pizza Curry Gemüse', '9,50 €', ''],
+    ['Pizza Margherita', '7,50 €', ''],
+    ['Pizza Salami', '8,50 €', ''],
+    ['Pizza Schinken', '9,50 €', ''],
+    ['Pizza Roma', '9,50 €', 'Salami, Schinken, Champignons'],
+    ['Pizza Hawaii', '8,50 €', 'Schinken, Ananas'],
+    ['Pizza Tonno', '9,50 €', 'Thunfisch, Zwiebeln'],
+    ['Pizza Vegetarisch', '9,50 €', 'Mix Gemüse', [V]],
+    ['Pizza Gyros', '9,50 €', 'Zwiebeln, Peperoni'],
+    ['Pizza Meeresfrüchte', '9,50 €', 'Thunfisch, Meeresfrüchte, Zwiebeln, Knoblauch'],
+    ['Pizza Shrimps', '9,50 €', 'Shrimps, Tomaten, Oliven, Knoblauch, Zwiebeln'],
+    ['Pizza Mexico', '8,50 €', 'Hackfleisch, Peperoni, Mais'],
+    ['Pizza Bolognese', '9,50 €', 'Hackfleisch, Zwiebeln'],
+    ['Pizza Kreta', '9,50 €', 'Salami, Schafskäse, Oliven, Peperoni'],
+    ['Pizza Mumbay', '9,90 €', 'Currysauce, Chicken, Paprika, Zwiebeln'],
+    ['Pizza Jimmy', '9,50 €', 'Hähnchen, Broccoli, Zwiebeln, Sauce Hollandaise'],
+  ]},
+  { cat: 'Kids Menü', items: [
+    ['Chicken Nuggets', '6,90 €', '5 Stück, mit Pommes frites'],
+    ['Chicken Wings', '7,90 €', '5 Stück, mit Pommes frites'],
+    ['Currywurst', '7,90 €', 'mit Pommes frites'],
+  ]},
+  { cat: 'Pasta', items: [
+    ['Pasta Mumbay', '10,90 €', 'Hähnchenfleisch, Curry, Ananas, Tomaten-Sahnesauce'],
+    ['Pasta Bolognese', '8,90 €', 'Hackfleisch in Tomatensauce'],
+    ['Pasta Carbonara', '8,90 €', 'Schinken, Ei, Sahnesauce'],
+    ['Pasta de la Casa', '9,90 €', 'Schinken, Champignons, Sahnesauce'],
+    ['Pasta Salmon', '11,90 €', 'Lachs, Broccoli, Sahnesauce'],
+    ['Pasta Garnelen', '14,90 €', 'Garnelen, Knoblauch, Chili-Sahnesauce'],
+    ['Pasta Jimmy', '11,90 €', 'Lachs, Spinat, Gorgonzolasauce'],
+    ['Pasta Gemüse', '9,90 €', 'Saisongemüse, Tomaten-Sahnesauce', [V]],
+    ['Pasta Espinach', '9,90 €', 'Spinat, Knoblauch, Sahnesauce', [V]],
+  ]},
+  { cat: 'Aufläufe', items: [
+    ['Kartoffel-Broccoli Auflauf', '10,90 €', 'Kartoffeln, Broccoli, Sahnesauce', [V]],
+    ['Gemüse-Auflauf', '9,90 €', 'Saisongemüse, Tomaten-Sahnesauce', [V]],
+    ['Hähnchen-Nudel Auflauf', '10,90 €', 'Broccoli, Sahnesauce'],
+    ['Gyros Auflauf', '11,90 €', 'Champignons, Sahnesauce'],
+  ]},
+  { cat: 'Tapas de Pollo', items: [
+    ['Hähnchenfilet mit Limettensauce', '5,90 €', ''],
+    ['Hähnchenfilet mit Brandysauce', '5,90 €', ''],
+    ['Hähnchenfilet mit Currysauce', '5,90 €', ''],
+    ['Hähnchenfilet mit Mandelsauce', '5,90 €', ''],
+    ['Gegrillter Hähnchen-Chorizo-Spieß', '5,90 €', ''],
+  ]},
+  { cat: 'Indische Spezialitäten', items: [
+    ['Bengan Alu', '9,90 €', 'scharfe Tomatensauce, Aubergine, Kartoffeln', [VG, S]],
+    ['Jimmys Spezial', '10,90 €', 'Saisongemüse in Curry-Kokossauce', [VG]],
+    ['Bengan Paneer', '10,90 €', 'Auberginen mit indischem Käse in scharfer Tomatensauce', [V, S]],
+    ['Vegetarisches Korma', '10,90 €', 'Gemüse, Cashewnüsse, Kormasauce', [V]],
+    ['Palak Paneer', '10,90 €', 'Spinat, indischer Käse, scharfe Tomatensauce', [V, S]],
+    ['Garnelen Tawa Masala', '15,90 €', 'scharfe Tomatensauce', [S]],
+    ['Garnelen Malai Jundi', '15,90 €', 'Cashew-Creme-Sauce', [S]],
+    ['Butter Chicken', '12,90 €', 'Hähnchenfilet, Butter-Tomaten-Sahnesauce'],
+    ['Chicken Mango', '11,90 €', 'Hähnchenfilet, Mango, Zwiebeln, Sahnesauce'],
+    ['Chicken Vindaloo', '11,90 €', 'Hähnchenfilet, Kartoffel, Currysauce'],
+    ['Chicken Malai Jundi', '13,90 €', 'Hähnchenfilet, Cashewnuss-Creme-Sauce'],
+    ['Chicken Korma', '11,90 €', 'Hähnchenfilet, Kormasauce'],
+    ['Chicken Jalfrezi', '11,90 €', 'Hähnchenfilet, Paprika, Knoblauch, Zwiebeln, Tomatensauce'],
+    ['Lamm Sekh Kebab', '13,90 €', 'mit Salat'],
+    ['Gegrilltes Lammfilet', '16,90 €', 'Kräuterbutter, Tzatziki, Salat'],
+  ]},
+  { cat: 'Alkoholfreie Getränke', items: [
+    ['Coca-Cola 1,0l', '3,50 €', ''],
+    ['Coca-Cola Zero Sugar 1,0l', '3,50 €', ''],
+    ['Coca-Cola light taste 1,0l', '3,50 €', ''],
+    ['Mezzo Mix 1,0l', '3,50 €', ''],
+    ['Stilles Wasser 1,0l', '3,00 €', ''],
+    ['Wasser mit Kohlensäure 1,0l', '3,00 €', ''],
+    ['Lübzer alkoholfrei 0,3l', '2,60 €', ''],
+  ]},
+  { cat: 'Alkoholische Getränke', items: [
+    ['Lübzer Bier 0,3l', '2,60 €', ''],
+    ['Carlsberg Bier 0,33l', '2,60 €', ''],
+    ['Becks Bier 0,33l', '2,60 €', ''],
+    ['San Miguel Bier 0,33l', '3,00 €', ''],
+    ['Estrella Galicia Bier 0,33l', '2,60 €', ''],
+    ['Spanischer Rotwein 0,7l', '19,90 €', ''],
+    ['Rioja Rotwein 0,7l', '19,90 €', ''],
+    ['Tempranillo Rotwein 0,7l', '19,90 €', ''],
+    ['Merlot Rotwein 0,7l', '19,90 €', ''],
+    ['Shiraz Rotwein 0,7l', '19,90 €', ''],
+    ['Weißburgunder Weißwein 0,7l', '19,90 €', ''],
+    ['Rioja Weißwein 0,7l', '19,90 €', ''],
+    ['Chardonnay Weißwein 0,7l', '19,90 €', ''],
+    ['Sauvignon Blanc Weißwein 0,7l', '19,90 €', ''],
+  ]},
+];
+
+class Component extends DCLogic {
+  state = { scrolled: false, active: 'Salate' };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > 80;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this.onScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  renderVals() {
+    const active = this.state.active;
+    const current = MENU.find(m => m.cat === active) || MENU[0];
+    return {
+      logoUrl: 'images/jimmys-logo.png',
+      navTransparent: !this.state.scrolled,
+      navLinks: [
+        { label: 'Speisekarte', href: 'Menu.html' },
+        { label: 'Über uns', href: 'About.html' },
+        { label: 'Kontakt', href: 'Contact.html' },
+      ],
+      categories: MENU.map(m => ({
+        label: m.cat,
+        select: () => this.setState({ active: m.cat }),
+        bg: m.cat === active ? 'var(--gold-500)' : 'transparent',
+        borderColor: m.cat === active ? 'var(--gold-500)' : 'var(--border-on-dark)',
+        color: m.cat === active ? 'var(--action-primary-text)' : 'var(--text-on-dark-secondary)',
+      })),
+      dishes: current.items.map(([name, price, description, badges]) => ({
+        name, price, description, badges: badges || [],
+      })),
+      hours: [
+        { days: 'Täglich', time: '12 – 00 Uhr' },
+      ],
+      socials: [
+        { label: 'Instagram', href: 'https://www.instagram.com/jimmys_tapass_bar/', icon: 'instagram' },
+        { label: 'Facebook', href: 'https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE', icon: 'facebook' },
+      ],
+      legalLinks: [
+        { label: 'Datenschutz', href: 'Datenschutz.html' },
+        { label: 'Impressum', href: 'Impressum.html' },
+      ],
+    };
+  }
+}
+</script>
+</body></html>

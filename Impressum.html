@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Impressum — Jimmy's Tapas Bar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/js/dc-runtime.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <script src="assets/js/design-system.js"></script>
+  <style>
+    .legal-body h2{font:var(--text-display-sm);color:var(--text-on-light-primary);margin:var(--space-7) 0 var(--space-3)}
+    .legal-body h2:first-child{margin-top:0}
+    .legal-body p{font:var(--text-body);color:var(--text-on-light-secondary);margin:0 0 var(--space-3)}
+    .legal-body a{color:var(--gold-600)}
+  </style>
+</helmet>
+
+<div style="background:var(--surface-page)" data-screen-label="Impressum">
+
+  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.NavBar" logo="{{ logoUrl }}" links="{{ navLinks }}" cta-label="Reservieren" cta-href="Contact.html#reservieren" transparent="{{ navTransparent }}" hint-size="100%,84px"></x-import>
+
+  <!-- HEADER -->
+  <section style="background:var(--ink-900);padding:calc(84px + var(--space-8)) var(--container-pad) var(--space-8);text-align:center;border-bottom:1px solid var(--border-on-dark)">
+    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
+    <div style="margin-top:var(--space-5)">
+      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" title="Impressum" hint-size="100%,100px"></x-import>
+    </div>
+  </section>
+
+  <!-- INHALT -->
+  <section style="background:var(--surface-page-alt);padding:var(--space-9) var(--container-pad)">
+    <div class="legal-body" style="max-width:820px;margin:0 auto">
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        [Vor- und Nachname des Betreibers]<br>
+        Jimmy's Tapas Bar<br>
+        Am Strande 21<br>
+        23730 Neustadt in Holstein
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: <a href="tel:+4915735256793">+49 1573 5256793</a><br>
+        E-Mail: [E-Mail-Adresse]
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br>[USt-IdNr.]</p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>
+        [Vor- und Nachname der verantwortlichen Person]<br>
+        Am Strande 21<br>
+        23730 Neustadt in Holstein
+      </p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+      <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
+
+      <h2>Haftung für Links</h2>
+      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+    </div>
+  </section>
+
+  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Footer" logo="{{ logoUrl }}" address="Am Strande 21
+23730 Neustadt in Holstein
++49 1573 5256793" hours="{{ hours }}" socials="{{ socials }}" legal-links="{{ legalLinks }}" hint-size="100%,320px"></x-import>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+class Component extends DCLogic {
+  state = { scrolled: false };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > 80;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this.onScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  renderVals() {
+    return {
+      logoUrl: 'images/jimmys-logo.png',
+      navTransparent: !this.state.scrolled,
+      navLinks: [
+        { label: 'Speisekarte', href: 'Menu.html' },
+        { label: 'Über uns', href: 'About.html' },
+        { label: 'Kontakt', href: 'Contact.html' },
+      ],
+      hours: [
+        { days: 'Täglich', time: '12 – 00 Uhr' },
+      ],
+      socials: [
+        { label: 'Instagram', href: 'https://www.instagram.com/jimmys_tapass_bar/', icon: 'instagram' },
+        { label: 'Facebook', href: 'https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE', icon: 'facebook' },
+      ],
+      legalLinks: [
+        { label: 'Datenschutz', href: 'Datenschutz.html' },
+        { label: 'Impressum', href: 'Impressum.html' },
+      ],
+    };
+  }
+}
+</script>
+</body></html>
