@@ -1,115 +1,122 @@
 <!DOCTYPE html>
-<html><head>
-<meta charset="utf-8">
-<title>Über uns — Jimmy's Tapas Bar</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="assets/js/dc-runtime.js"></script>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Über uns — Jimmy's Tapas Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
-<x-dc>
+<body data-page="about">
+  <a class="skip" href="#main">Zum Inhalt</a>
+  <div class="progress" aria-hidden="true"></div>
 
-<helmet>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <script src="assets/js/design-system.js"></script>
-</helmet>
+  <header class="nav">
+    <a class="nav-logo" href="index.html" aria-label="Jimmy's Tapas Bar">
+      <img src="assets/media/images/logo.png" alt="Jimmy's Tapas Bar">
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menü" aria-expanded="false"><span></span></button>
+    <ul class="nav-links">
+      <li><a href="Menu.html" data-page="menu">Speisekarte</a></li>
+      <li><a href="About.html" data-page="about">Über uns</a></li>
+      <li><a href="Contact.html" data-page="contact">Kontakt</a></li>
+      <li><a class="btn btn-primary" href="Contact.html#reservieren">Reservieren</a></li>
+    </ul>
+  </header>
 
-<div style="background:var(--surface-page)" data-screen-label="About">
-
-  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.NavBar" logo="{{ logoUrl }}" links="{{ navLinks }}" cta-label="Reservieren" cta-href="Contact.html#reservieren" transparent="{{ navTransparent }}" hint-size="100%,84px"></x-import>
-
-  <!-- HEADER -->
-  <section style="background:var(--ink-900);padding:calc(84px + var(--space-8)) var(--container-pad) var(--space-8);text-align:center;border-bottom:1px solid var(--border-on-dark)">
-    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
-    <div style="margin-top:var(--space-5)">
-      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" eyebrow="Genießen · Entspannen · Wohlfühlen" title="Über uns" script="dein Platz an der Ostsee" hint-size="100%,140px"></x-import>
-    </div>
-  </section>
-
-  <!-- GESCHICHTE -->
-  <section style="background:var(--surface-page);padding:var(--section-pad-y) var(--container-pad)">
-    <div class="split-grid">
-      <div style="aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg)">
-        <img src="images/bar.png" alt="Bar bei Jimmy's Tapas Bar" style="width:100%;height:100%;object-fit:cover;display:block">
+  <main id="main">
+    <section class="page-hero">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline poster="assets/media/images/venue-sunset.png">
+          <source src="assets/media/videos/hero-sunset.mp4" type="video/mp4">
+        </video>
       </div>
-      <div>
-        <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" align="left" eyebrow="Direkt am Strand" title="Willkommen bei Jimmy's" script="mitten in Neustadt in Holstein" hint-size="100%,140px"></x-import>
-        <p style="font:var(--text-serif-body);color:var(--cream-300);margin-top:var(--space-6);max-width:480px">Direkt am Strande 21 in Neustadt in Holstein, mit Blick auf die Ostsee. Spanische Tapas, ausgesuchte Weine und handgemachte Cocktails treffen auf Kerzenlicht und warmes Holz — ein Ort, an dem du gerne länger bleibst.</p>
-        <p style="font:var(--text-serif-body);color:var(--cream-300);margin-top:var(--space-4);max-width:480px">Ob nach einem Strandtag, zum Sonnenuntergang auf der Terrasse oder für einen langen Abend mit Freunden: Bei uns kommt alles frisch auf den Tisch — von klassischen spanischen Tapas über griechische und indische Spezialitäten bis zur Cocktailkarte, die unsere Barkeeper live am Tresen mixen.</p>
+      <div class="hero-scrim"></div>
+      <div class="hero-copy">
+        <hr class="gold-rule">
+        <span class="eyebrow">Genießen · Entspannen · Wohlfühlen</span>
+        <h1 class="display-md">Über uns</h1>
+        <div class="script">dein Platz an der Ostsee</div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- KÜCHE -->
-  <section style="background:var(--ink-900);padding:var(--section-pad-y) var(--container-pad)">
-    <div class="split-grid">
-      <div style="aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-lg);order:2">
-        <img src="images/essen.png" alt="Tapas bei Jimmy's" style="width:100%;height:100%;object-fit:cover;display:block">
-      </div>
-      <div style="order:1">
-        <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" align="left" eyebrow="Aus unserer Küche" title="Vielfalt auf kleinen Tellern" script="zum Teilen gemacht" hint-size="100%,140px"></x-import>
-        <p style="font:var(--text-serif-body);color:var(--cream-300);margin-top:var(--space-6);max-width:480px">Tapas heißt: viele kleine Gerichte, die man teilt. Unsere Karte reicht von Papas Bravas und Gambas al Ajillo über gegrillten Oktopus bis zu Pizza, Pasta und Gerichten für die Kleinen — für jeden Geschmack und jeden Hunger.</p>
-        <div style="margin-top:var(--space-6)">
-          <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Button" variant="secondary" href="Menu.html" hint-size="auto,48px">Zur Speisekarte</x-import>
+    <section class="section section-ink">
+      <div class="wrap split">
+        <div class="frame reveal">
+          <img src="assets/media/images/venue-bar.png" alt="Bar bei Jimmy's Tapas Bar">
+        </div>
+        <div class="split-copy reveal">
+          <div class="section-head left">
+            <hr class="gold-rule">
+            <span class="eyebrow">Direkt am Strand</span>
+            <h2 class="display-md">Willkommen bei Jimmy's</h2>
+            <span class="script">mitten in Neustadt in Holstein</span>
+          </div>
+          <p class="serif-body">Direkt am Strande 21 in Neustadt in Holstein, mit Blick auf die Ostsee. Spanische Tapas, ausgesuchte Weine und handgemachte Cocktails treffen auf Kerzenlicht und warmes Holz — ein Ort, an dem du gerne länger bleibst.</p>
+          <p class="serif-body">Ob nach einem Strandtag, zum Sonnenuntergang auf der Terrasse oder für einen langen Abend mit Freunden: Bei uns kommt alles frisch auf den Tisch — von klassischen spanischen Tapas über griechische und indische Spezialitäten bis zur Cocktailkarte, die unsere Barkeeper live am Tresen mixen.</p>
         </div>
       </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="wrap split reverse">
+        <div class="frame reveal">
+          <img src="assets/media/images/venue-tapas.png" alt="Tapas bei Jimmy's">
+        </div>
+        <div class="split-copy reveal">
+          <div class="section-head left">
+            <hr class="gold-rule">
+            <span class="eyebrow">Aus unserer Küche</span>
+            <h2 class="display-md">Vielfalt auf kleinen Tellern</h2>
+            <span class="script">zum Teilen gemacht</span>
+          </div>
+          <p class="serif-body">Tapas heißt: viele kleine Gerichte, die man teilt. Unsere Karte reicht von Papas Bravas und Gambas al Ajillo über gegrillten Oktopus bis zu Pizza, Pasta und Gerichten für die Kleinen — für jeden Geschmack und jeden Hunger.</p>
+          <a class="btn btn-secondary" href="Menu.html">Zur Speisekarte</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="band-media">
+        <video data-autopause muted loop playsinline poster="assets/media/images/stock-wine.jpg">
+          <source src="assets/media/videos/cocktails.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="band-scrim"></div>
+      <hr class="gold-rule">
+      <h2 class="display-md">Komm vorbei</h2>
+      <span class="script">wir freuen uns auf Dich</span>
+      <a class="btn btn-primary btn-lg" href="Contact.html#reservieren">Tisch reservieren</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/media/images/logo.png" alt="Jimmy's Tapas Bar">
+        <p>Tapas & Cocktails direkt an der Ostsee.</p>
+      </div>
+      <div>
+        <h4>Adresse</h4>
+        <p>Am Strande 21<br>23730 Neustadt in Holstein<br><a href="tel:+4915735256793">+49 1573 5256793</a></p>
+      </div>
+      <div>
+        <h4>Öffnungszeiten</h4>
+        <p>Täglich<br>12 – 00 Uhr</p>
+        <p style="margin-top:1rem"><a href="https://www.instagram.com/jimmys_tapass_bar/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
     </div>
-  </section>
-
-  <!-- RESERVIERUNGS-CTA -->
-  <section style="background:var(--surface-page);padding:var(--space-10) var(--container-pad);text-align:center;border-top:1px solid var(--border-on-dark)">
-    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
-    <h2 style="font:var(--text-display-md);color:var(--cream-100);margin:var(--space-5) 0 0">Komm vorbei</h2>
-    <div style="font:var(--text-script-md);color:var(--gold-400);margin-top:var(--space-2);white-space:nowrap">wir freuen uns auf Dich</div>
-    <div style="margin-top:var(--space-6)">
-      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Button" variant="primary" size="lg" href="Contact.html#reservieren" hint-size="auto,52px">Tisch reservieren</x-import>
+    <div class="footer-bottom">
+      <span>Jimmy's Tapas Bar</span>
+      <div>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Impressum.html">Impressum</a>
+      </div>
     </div>
-  </section>
+  </footer>
 
-  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Footer" logo="{{ logoUrl }}" address="Am Strande 21
-23730 Neustadt in Holstein
-+49 1573 5256793" hours="{{ hours }}" socials="{{ socials }}" legal-links="{{ legalLinks }}" hint-size="100%,320px"></x-import>
-
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script="">
-class Component extends DCLogic {
-  state = { scrolled: false };
-
-  componentDidMount() {
-    this.onScroll = () => {
-      const s = window.scrollY > 80;
-      if (s !== this.state.scrolled) this.setState({ scrolled: s });
-    };
-    window.addEventListener('scroll', this.onScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
-  renderVals() {
-    return {
-      logoUrl: 'images/jimmys-logo.png',
-      navTransparent: !this.state.scrolled,
-      navLinks: [
-        { label: 'Speisekarte', href: 'Menu.html' },
-        { label: 'Über uns', href: 'About.html' },
-        { label: 'Kontakt', href: 'Contact.html' },
-      ],
-      hours: [
-        { days: 'Täglich', time: '12 – 00 Uhr' },
-      ],
-      socials: [
-        { label: 'Instagram', href: 'https://www.instagram.com/jimmys_tapass_bar/', icon: 'instagram' },
-        { label: 'Facebook', href: 'https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE', icon: 'facebook' },
-      ],
-      legalLinks: [
-        { label: 'Datenschutz', href: 'Datenschutz.html' },
-        { label: 'Impressum', href: 'Impressum.html' },
-      ],
-    };
-  }
-}
-</script>
-</body></html>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,163 +1,145 @@
 <!DOCTYPE html>
-<html><head>
-<meta charset="utf-8">
-<title>Kontakt & Reservierung — Jimmy's Tapas Bar</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="assets/js/dc-runtime.js"></script>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt & Reservierung — Jimmy's Tapas Bar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
-<x-dc>
+<body data-page="contact">
+  <a class="skip" href="#main">Zum Inhalt</a>
+  <div class="progress" aria-hidden="true"></div>
 
-<helmet>
-  <link rel="stylesheet" href="assets/css/base.css">
-  <script src="assets/js/design-system.js"></script>
-</helmet>
+  <header class="nav">
+    <a class="nav-logo" href="index.html" aria-label="Jimmy's Tapas Bar">
+      <img src="assets/media/images/logo.png" alt="Jimmy's Tapas Bar">
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Menü" aria-expanded="false"><span></span></button>
+    <ul class="nav-links">
+      <li><a href="Menu.html" data-page="menu">Speisekarte</a></li>
+      <li><a href="About.html" data-page="about">Über uns</a></li>
+      <li><a href="Contact.html" data-page="contact">Kontakt</a></li>
+      <li><a class="btn btn-primary" href="#reservieren">Reservieren</a></li>
+    </ul>
+  </header>
 
-<div style="background:var(--surface-page)" data-screen-label="Contact">
-
-  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.NavBar" logo="{{ logoUrl }}" links="{{ navLinks }}" cta-label="Reservieren" cta-href="#reservieren" transparent="{{ navTransparent }}" hint-size="100%,84px"></x-import>
-
-  <!-- HEADER -->
-  <section style="background:var(--ink-900);padding:calc(84px + var(--space-8)) var(--container-pad) var(--space-8);text-align:center;border-bottom:1px solid var(--border-on-dark)">
-    <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Divider" tone="gold" width="80" hint-size="80px,16px"></x-import>
-    <div style="margin-top:var(--space-5)">
-      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" eyebrow="Gutes Essen · Gute Getränke · Gute Zeiten" title="Kontakt" script="wir sind für Dich da" hint-size="100%,140px"></x-import>
-    </div>
-  </section>
-
-  <!-- KONTAKT-INFOS -->
-  <section style="background:var(--surface-page);padding:var(--section-pad-y) var(--container-pad)">
-    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:var(--space-6)">
-
-      <div style="background:var(--surface-card);border:1px solid var(--border-on-dark);border-radius:var(--radius-lg);padding:var(--space-6);text-align:center">
-        <div style="font:var(--text-eyebrow);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--gold-300);margin-bottom:var(--space-3)">Adresse</div>
-        <p style="font:var(--text-serif-md);color:var(--text-on-dark-primary);margin:0">Am Strande 21<br>23730 Neustadt in Holstein</p>
+  <main id="main">
+    <section class="page-hero">
+      <div class="hero-media">
+        <img src="assets/media/images/venue-bar.png" alt="">
       </div>
-
-      <div style="background:var(--surface-card);border:1px solid var(--border-on-dark);border-radius:var(--radius-lg);padding:var(--space-6);text-align:center">
-        <div style="font:var(--text-eyebrow);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--gold-300);margin-bottom:var(--space-3)">Telefon</div>
-        <p style="font:var(--text-serif-md);color:var(--text-on-dark-primary);margin:0"><a href="tel:+4915735256793" style="text-decoration:none">+49 1573 5256793</a></p>
+      <div class="hero-scrim"></div>
+      <div class="hero-copy">
+        <hr class="gold-rule">
+        <span class="eyebrow">Gutes Essen · Gute Getränke · Gute Zeiten</span>
+        <h1 class="display-md">Kontakt</h1>
+        <div class="script">wir sind für Dich da</div>
       </div>
+    </section>
 
-      <div style="background:var(--surface-card);border:1px solid var(--border-on-dark);border-radius:var(--radius-lg);padding:var(--space-6);text-align:center">
-        <div style="font:var(--text-eyebrow);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--gold-300);margin-bottom:var(--space-3)">Öffnungszeiten</div>
-        <p style="font:var(--text-serif-md);color:var(--text-on-dark-primary);margin:0">Täglich 12 – 00 Uhr</p>
+    <section class="section section-ink">
+      <div class="wrap info-grid">
+        <article class="info-card reveal">
+          <div class="eyebrow">Adresse</div>
+          <p>Am Strande 21<br>23730 Neustadt in Holstein</p>
+        </article>
+        <article class="info-card reveal">
+          <div class="eyebrow">Telefon</div>
+          <p><a href="tel:+4915735256793">+49 1573 5256793</a></p>
+        </article>
+        <article class="info-card reveal">
+          <div class="eyebrow">Öffnungszeiten</div>
+          <p>Täglich 12 – 00 Uhr</p>
+        </article>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- RESERVIERUNG -->
-  <section id="reservieren" style="position:relative;padding:var(--section-pad-y) var(--container-pad);overflow:hidden">
-    <img src="images/essen.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
-    <div style="position:absolute;inset:0;background:var(--surface-overlay)"></div>
-    <div style="position:relative;max-width:640px;margin:0 auto">
-      <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.SectionHeading" eyebrow="Gutes Essen · Gute Getränke · Gute Zeiten" title="Tisch reservieren" script="wir freuen uns auf Dich" hint-size="100%,140px"></x-import>
-      <div style="margin-top:var(--space-8);background:var(--surface-card);border:1px solid var(--border-on-dark);border-radius:var(--radius-lg);padding:var(--space-7);box-shadow:var(--shadow-lg)">
-
-        <sc-if value="{{ submitted }}">
-          <div style="text-align:center;padding:var(--space-6) 0">
-            <div style="font:var(--text-display-sm);color:var(--cream-100);margin-bottom:var(--space-3)">Vielen Dank, {{ firstName }}!</div>
-            <p style="font:var(--text-body);color:var(--cream-300)">Deine Reservierung für {{ formGuests }} Personen am {{ formDate }} um {{ formTime }} Uhr ist bei uns eingegangen. Wir melden uns zur Bestätigung.</p>
-            <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Button" variant="secondary" onclick="{{ onReset }}" style="margin-top:var(--space-5)" hint-size="auto,48px">Neue Reservierung</x-import>
+    <section class="reserve" id="reservieren">
+      <div class="band-media">
+        <video data-autopause muted loop playsinline poster="assets/media/images/venue-tapas.png">
+          <source src="assets/media/videos/tapas-table.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="band-scrim"></div>
+      <div class="section-head reveal">
+        <hr class="gold-rule">
+        <span class="eyebrow">Gutes Essen · Gute Getränke · Gute Zeiten</span>
+        <h2 class="display-md">Tisch reservieren</h2>
+        <span class="script">wir freuen uns auf Dich</span>
+      </div>
+      <div class="form-card reveal">
+        <div id="reserve-thanks" class="thanks" hidden>
+          <h3 class="display-sm">Vielen Dank, <span data-first></span>!</h3>
+          <p>Deine Reservierung für <span data-guests></span> Personen am <span data-date></span> um <span data-time></span> Uhr ist bei uns eingegangen. Wir melden uns zur Bestätigung.</p>
+          <button class="btn btn-secondary" type="button" data-reset>Neue Reservierung</button>
+        </div>
+        <form id="reserve-form" class="form">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Vor- und Nachname" required>
+            </div>
+            <div class="field">
+              <label for="contact">Telefon oder E-Mail</label>
+              <input id="contact" name="contact" placeholder="für die Bestätigung" required>
+            </div>
           </div>
-        </sc-if>
-
-        <sc-if value="{{ notSubmitted }}">
-          <form onsubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:var(--space-5)">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
-              <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Input" label="Name" placeholder="Vor- und Nachname" value="{{ formName }}" onChange="{{ onName }}" required="{{ isTrue }}"></x-import>
-              <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Input" label="Telefon oder E-Mail" placeholder="für die Bestätigung" value="{{ formContact }}" onChange="{{ onContact }}" required="{{ isTrue }}"></x-import>
+          <div class="form-row three">
+            <div class="field">
+              <label for="date">Datum</label>
+              <input id="date" name="date" type="date" required>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4)">
-              <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Input" label="Datum" type="date" value="{{ formDate }}" onChange="{{ onDate }}" required="{{ isTrue }}"></x-import>
-              <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Input" label="Uhrzeit" type="time" value="{{ formTime }}" onChange="{{ onTime }}" required="{{ isTrue }}"></x-import>
-              <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Select" label="Personen" value="{{ formGuests }}" onChange="{{ onGuests }}" options="{{ guestOptions }}"></x-import>
+            <div class="field">
+              <label for="time">Uhrzeit</label>
+              <input id="time" name="time" type="time" required>
             </div>
-            <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Button" variant="primary" size="lg" style="margin-top:var(--space-2)" hint-size="100%,52px">Jetzt reservieren</x-import>
-            <p style="font:var(--text-caption);color:var(--text-on-dark-muted);margin:0;text-align:center">Oder ruf uns direkt an: <a href="tel:+4915735256793">+49 1573 5256793</a></p>
-          </form>
-        </sc-if>
+            <div class="field">
+              <label for="guests">Personen</label>
+              <select id="guests" name="guests">
+                <option>1</option>
+                <option selected>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6+</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Jetzt reservieren</button>
+          <p class="form-note">Oder ruf uns direkt an: <a href="tel:+4915735256793">+49 1573 5256793</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <img src="assets/media/images/logo.png" alt="Jimmy's Tapas Bar">
+        <p>Tapas & Cocktails direkt an der Ostsee.</p>
+      </div>
+      <div>
+        <h4>Adresse</h4>
+        <p>Am Strande 21<br>23730 Neustadt in Holstein<br><a href="tel:+4915735256793">+49 1573 5256793</a></p>
+      </div>
+      <div>
+        <h4>Öffnungszeiten</h4>
+        <p>Täglich<br>12 – 00 Uhr</p>
+        <p style="margin-top:1rem"><a href="https://www.instagram.com/jimmys_tapass_bar/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE" target="_blank" rel="noopener">Facebook</a></p>
       </div>
     </div>
-  </section>
+    <div class="footer-bottom">
+      <span>Jimmy's Tapas Bar</span>
+      <div>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Impressum.html">Impressum</a>
+      </div>
+    </div>
+  </footer>
 
-  <x-import component-from-global-scope="JimmySTapasBarDesignSystem_b07675.Footer" logo="{{ logoUrl }}" address="Am Strande 21
-23730 Neustadt in Holstein
-+49 1573 5256793" hours="{{ hours }}" socials="{{ socials }}" legal-links="{{ legalLinks }}" hint-size="100%,320px"></x-import>
-
-</div>
-
-</x-dc>
-<script type="text/x-dc" data-dc-script="">
-class Component extends DCLogic {
-  state = {
-    scrolled: false,
-    submitted: false,
-    form: { name: '', contact: '', date: '', time: '', guests: '2' },
-  };
-
-  componentDidMount() {
-    this.onScroll = () => {
-      const s = window.scrollY > 80;
-      if (s !== this.state.scrolled) this.setState({ scrolled: s });
-    };
-    window.addEventListener('scroll', this.onScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
-  updateField(key) {
-    return (e) => this.setState({ form: { ...this.state.form, [key]: e.target.value } });
-  }
-
-  renderVals() {
-    const f = this.state.form;
-    return {
-      logoUrl: 'images/jimmys-logo.png',
-      navTransparent: !this.state.scrolled,
-      navLinks: [
-        { label: 'Speisekarte', href: 'Menu.html' },
-        { label: 'Über uns', href: 'About.html' },
-        { label: 'Kontakt', href: 'Contact.html' },
-      ],
-      isTrue: true,
-      submitted: this.state.submitted,
-      notSubmitted: !this.state.submitted,
-      firstName: f.name.split(' ')[0],
-      formName: f.name,
-      formContact: f.contact,
-      formDate: f.date,
-      formTime: f.time,
-      formGuests: f.guests,
-      guestOptions: ['1', '2', '3', '4', '5', '6+'],
-      onName: this.updateField('name'),
-      onContact: this.updateField('contact'),
-      onDate: this.updateField('date'),
-      onTime: this.updateField('time'),
-      onGuests: this.updateField('guests'),
-      onSubmit: (e) => {
-        e.preventDefault();
-        if (!f.name || !f.contact || !f.date || !f.time) return;
-        this.setState({ submitted: true });
-      },
-      onReset: () => this.setState({ submitted: false }),
-      hours: [
-        { days: 'Täglich', time: '12 – 00 Uhr' },
-      ],
-      socials: [
-        { label: 'Instagram', href: 'https://www.instagram.com/jimmys_tapass_bar/', icon: 'instagram' },
-        { label: 'Facebook', href: 'https://www.facebook.com/p/Jimmys-Tapas-Bar-100066451364288/?locale=de_DE', icon: 'facebook' },
-      ],
-      legalLinks: [
-        { label: 'Datenschutz', href: 'Datenschutz.html' },
-        { label: 'Impressum', href: 'Impressum.html' },
-      ],
-    };
-  }
-}
-</script>
-</body></html>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
